@@ -1,0 +1,92 @@
+
+" Don't forget to sync me to sourcecontrol
+
+" shows numbers on the left
+set number   
+
+set ruler
+
+" don't maintain compatibility with old vi
+set nocompatible
+
+" shows the numbers as being relative to the current line - useful for jumping
+set relativenumber
+filetype off                  " required
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" add all your plugins here (note older versions of Vundle
+" used Bundle instead of Plugin)
+
+
+Bundle 'Valloric/YouCompleteMe'
+" syntax checking/highlighting
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'tpope/vim-sensible'
+
+" git integration
+Plugin 'tpope/vim-fugitive'
+
+" Super searching
+Plugin 'kien/ctrlp.vim'
+
+" status bar that displays pythony things
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+"Colors!!!
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'jnurmine/Zenburn'
+
+
+let python_highlight_all=1
+
+syntax on
+
+" ...
+"
+" set proper tabs and indentation for Python files
+au BufNewFile, BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" mark horrible whitespace
+au BufRead, BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" UTF Support
+set encoding=utf-8
+
+let python_highlight_all=1
+
+
+let mapleader=","
+nnoremap <leader>ve :vsplit ~/.vimrc<CR>
+nnoremap <leader>vs :source ~/.vimrc<CR>
+
+
+" remap Escape
+:imap kj <Esc>
