@@ -16,6 +16,8 @@ set clipboard+=ideaput
 nnoremap \e :e ~/.ideavimrc<CR>
 nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 
+let mapleader = " "
+
 " Views
 map <leader>z <Action>(ToggleDistractionFreeMode)
 map <leader>a <Action>(Annotate)
