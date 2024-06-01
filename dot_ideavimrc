@@ -1,0 +1,74 @@
+"" Source your .vimrc
+source ~/.vimrc
+
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Clipboard handling
+set clipboard=unnamed,unnamedplus
+set clipboard+=ideaput
+
+" idea vimrc editing
+nnoremap \e :e ~/.ideavimrc<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+
+" Views
+map <leader>z <Action>(ToggleDistractionFreeMode)
+map <leader>a <Action>(Annotate)
+map <Leader>e <Action>(ShowErrorDescription)
+map <Leader>i <Action>(QuickJavaDoc)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <leader>n :set relativenumber!<CR>
+map <leader><enter> <Action>(ShowIntentionActions)
+"   folding
+map <leader>- <Action>(CollapseRegion)
+map <leader>+ <Action>(ExpandRegion)
+"   Dash by Kapeli
+map <Leader>d <Action>(SmartSearchAction)
+
+" EDITING
+map <leader>r <Action>(RenameElement)
+map <leader>R <Action>(Refactorings.QuickListPopupAction)
+map <leader>c <Action>(CommentByLineComment)
+map <leader>l <Action>(ReformatCode)
+"   multiple cursors
+map <A-k> <Action>(EditorCloneCaretAbove)
+map <A-j> <Action>(EditorCloneCaretBelow)
+map <C-A-l> <Action>(EditorAddCaretPerSelectedLine)
+
+" NAVIGATION
+map <leader>o <Action>(FileStructurePopup)
+map <leader>s <Action>(GotoSymbol)
+map <leader>t <Action>(SelectInProjectView)
+map <leader>u <Action>(FindUsages)
+map <C-]> <Action>(GotoDeclaration)
+map gf <Action>(GotoDeclaration)
+"   recent locations
+map <A-h> <Action>(Back)
+map <A-l> <Action>(Forward)
+"   errors
+map gj <Action>(GotoNextError)
+map gk <Action>(GotoPreviousError)
+"   (idea)markers
+map gm <Action>(VcsShowNextChangeMarker)
+map g, <Action>(VcsShowPrevChangeMarker)
+"   search and global search
+map / <Action>(Find)
+map <leader>/ <Action>(FindInPath)
+map n <Action>(FindNext)
+map N <Action>(FindPrevious)
+"   panes
+map <C-l> <Action>(NextSplitter)
+map <C-h> <Action>(PrevSplitter)
+
+" BUILDING, DEBUGGING AND RUNNING
+map \b <Action>(ToggleLineBreakpoint)
+map <Leader>B <Action>(BuildProject)
+map <Leader>G <Action>(RunClass)
+map <leader>D <Action>(Debug)
+map <leader>S <Action>(Stop)
+
