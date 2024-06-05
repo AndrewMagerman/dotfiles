@@ -14,42 +14,42 @@ set relativenumber
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+"Plugin 'gmarik/Vundle.vim'
 
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
 
 
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 " syntax checking/highlighting
-Plugin 'vim-syntastic/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'tpope/vim-sensible'
+"Plugin 'vim-syntastic/syntastic'
+"Plugin 'nvie/vim-flake8'
+"Plugin 'vim-scripts/indentpython.vim'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'editorconfig/editorconfig-vim'
+"Plugin 'tpope/vim-sensible'
 
 " git integration
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 
 " Super searching
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
 
 " status bar that displays pythony things
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 "Colors!!!
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'jnurmine/Zenburn'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'jnurmine/Zenburn'
 
 
-let python_highlight_all=1
+"let python_highlight_all=1
 
 syntax on
 
@@ -65,8 +65,8 @@ au BufNewFile, BufRead *.py
     \ set autoindent
     \ set fileformat=unix
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+"call vundle#end()            " required
+"filetype plugin indent on    " required
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -83,7 +83,7 @@ set encoding=utf-8
 let python_highlight_all=1
 
 
-let mapleader=","
+let mapleader=" "
 nnoremap <leader>ve :vsplit ~/.vimrc<CR>
 nnoremap <leader>vs :source ~/.vimrc<CR>
 
