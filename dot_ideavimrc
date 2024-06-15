@@ -8,6 +8,8 @@
 " nice special idea join
 set ideajoin
 
+" super surround plugin
+set surround
 
 " enables vim motions whilst navigating the idea file explorer
 set NERDTree
