@@ -1,6 +1,4 @@
 
-" Don't forget to sync me to sourcecontrol
-
 " shows numbers on the left
 set number   
 
@@ -11,9 +9,9 @@ set nocompatible
 
 " shows the numbers as being relative to the current line - useful for jumping
 set relativenumber
-filetype off                  " required
+"filetype off                  " required
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+"set rtp+=~/.vim/bundle/Vundle.vim
 "call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
