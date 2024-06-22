@@ -1,3 +1,9 @@
+" PRINCIPLES
+
+" delete any configuration that I am not actively using (kiss)
+" keep as close to standard vim as possible, avoid remaps (using vim on all machines)
+
+
 " Documentation:
 " IJ provides IdeaVim: track action Ids command to show the id of the executed actions. This command can be found in "Search everywhere" (double shift).
 " https://github.com/JetBrains/ideavim
@@ -25,21 +31,15 @@ set incsearch
 set clipboard=unnamed,unnamedplus
 set clipboard+=ideaput
 
-" idea vimrc editing
-nnoremap \e :e ~/.ideavimrc<CR>
-nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 
 let mapleader = " "
 
 " Views
 map <leader>z <Action>(ToggleDistractionFreeMode)
 map <leader>a <Action>(Annotate)
-"map <Leader>e <Action>(ShowErrorDescription)
 map <Leader>e <Action>(RecentFiles)
-map <Leader>i <Action>(QuickJavaDoc)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 map <leader>n :set relativenumber!<CR>
-map <leader><enter> <Action>(ShowIntentionActions)
 
 "   folding
 map <leader>- <Action>(CollapseRegion)
@@ -49,19 +49,18 @@ map <leader>+ <Action>(ExpandRegion)
 map <Leader>d <Action>(SmartSearchAction)
 
 " EDITING
-map <leader>r <Action>(RenameElement)
-map <leader>R <Action>(Refactorings.QuickListPopupAction)
 map <leader>c <Action>(CommentByLineComment)
 map <leader>l <Action>(ReformatCode)
 
-"   multiple cursors
-map <A-k> <Action>(EditorCloneCaretAbove)
-map <A-j> <Action>(EditorCloneCaretBelow)
-map <C-A-l> <Action>(EditorAddCaretPerSelectedLine)
+" Refactoring
+map <leader>R <Action>(Refactorings.QuickListPopupAction)
+map <leader>r <Action>(RenameElement)
+map <Leader>i <Action>(Inline)
+map <leader><enter> <Action>(ShowIntentionActions)
+
 
 " NAVIGATION
 map <leader>o <Action>(FileStructurePopup)
-map <leader>s <Action>(GotoSymbol)
 map <leader>t <Action>(SelectInProjectView)
 map <leader>u <Action>(FindUsages)
 map <C-]> <Action>(GotoDeclaration)
