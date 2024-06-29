@@ -11,6 +11,8 @@
 " Other ideavimrc for inspiration:
 " https://github.com/JetBrains/ideavim/discussions/303
 
+" https://www.cyberwizard.io/posts/the-ultimate-ideavim-setup/
+
 " nice special idea join
 set ideajoin
 
