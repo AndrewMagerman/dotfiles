@@ -56,7 +56,7 @@ alias addwip="git add -A && git commit --amend --no-edit"
 # puts vim keybindings in
 set -o vi
 
-" make chezmoi edits happen in vim
+# make chezmoi edits happen in vim
 export EDITOR=vim
 
 echo "~/.bash_profile version 2024-01-24 was sourced - welcome Andrew"
