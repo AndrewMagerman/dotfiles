@@ -17,7 +17,10 @@
 set ideajoin
 
 " super surround plugin
-" set surround
+set surround
+
+" briefly highlight the yanked area
+set highlightedyank
 
 " enables vim motions whilst navigating the idea file explorer
 " set NERDTree "removed, causes long delays with Defender stuff...
