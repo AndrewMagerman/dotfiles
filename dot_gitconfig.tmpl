@@ -1,0 +1,27 @@
+[user]
+        email = {{ if hasKey . "email" }}{{ .email | quote }}{{ else }}"andrew.magerman@magerman.com"{{ end }} 
+        name = {{ if hasKey . "name" }}{{ .name | quote }}{{ else }}"andrewmagerman"{{ end }}
+[core]
+	longpaths = true
+	preloadindex = true
+	fscache = true
+[http]
+	sslVerify = false
+	sslbackend = schannel
+[log]
+	mailmap = true
+[alias]
+	ca = commit -a -m
+	yeet = !git branch --merged| egrep -v "release" | xargs git branch --delete
+	graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+[push]
+	default = current
+[credential "http://outproxy2.pnet.ch:3128"]
+	provider = generic
+[safe]
+	directory = C:/Users/magermana/AppData/Local/Programs/Git/isynth_envs/pf_model
+	directory = *
+[credential]
+	helper = manager
+[gc]
+	auto = 256
