@@ -5,9 +5,11 @@
 	longpaths = true
 	preloadindex = true
 	fscache = true
+	autocrlf = true
 [http]
 	sslVerify = false
 	sslbackend = schannel
+	proxy = http://mageraman@outproxy2.pnet.ch:3128
 [log]
 	mailmap = true
 [alias]
@@ -25,3 +27,8 @@
 	helper = manager
 [gc]
 	auto = 256
+[difftool "sourcetree"]
+	cmd = "'' "
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true

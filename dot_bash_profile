@@ -41,24 +41,27 @@ alias sync="git push pf && git push itopia"
 alias synct="git push pf --tags && git push itopia --tags"
 alias gs="git status"
 alias cam="git add -A && git commit -am"
-alias rebase="git rebase -i release/2411"
+alias rebase="git rebase -i release/2502"
 
 alias isynthdev="cd /c/local/isynth_folder/isynth_develop/isynth"
 alias myday="git log --since=\"6am\" --oneline | clip"
 alias wip="git add -A && git commit -m\"wip\""
 alias install_requirements="source /c/work/isynth_folder/isynth_virtualenv/Scripts/activate && pip3 install -r /c/work/isynth_folder/isynth_envs/pf_model/requirements.txt --trusted-host repo.pnet.ch --index-url https://repo.pnet.ch/artifactory/api/pypi/python/simple && pip3 install -r /c/work/isynth_folder/isynth/requirements.txt --trusted-host repo.pnet.ch --index-url https://repo.pnet.ch/artifactory/api/pypi/python/simple"
-alias home="git checkout release/2411 && git pull pf release/2411"
+alias home="git checkout release/2502 && git pull pf release/2502"
 alias pushwip="git add -A && git commit -m\"wip\" && git push pf"
 alias pipupgrade="pip install --upgrade pip --trusted-host repo.pnet.ch --index-url https://repo.pnet.ch/artifactory/api/pypi/python/simple"
 alias activate="/c/work/isynth_folder/isynth_virtualenv/Scripts/activate"
 alias addwip="git add -A && git commit --amend --no-edit"
-
+alias ap="./ap.sh"
 # puts vim keybindings in
 set -o vi
 
 # make chezmoi edits happen in vim
 export EDITOR=vim
 
-echo "~/.bash_profile version 2024-01-24 was sourced - welcome Andrew"
+source /c/work/isynth_folder/isynth_virtualenv/Scripts/activate
+
+echo "~/.bash_profile version 2024-10-25 was sourced - welcome Andrew"
+sshe
 
 

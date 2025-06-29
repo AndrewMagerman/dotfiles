@@ -46,9 +46,6 @@ map <Leader>e <Action>(RecentFiles)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 map <leader>n :set relativenumber!<CR>
 
-"   folding
-map <leader>- <Action>(CollapseRegion)
-map <leader>+ <Action>(ExpandRegion)
 
 "   Dash by Kapeli
 map <Leader>d <Action>(SmartSearchAction)
@@ -56,6 +53,7 @@ map <Leader>d <Action>(SmartSearchAction)
 " EDITING
 map <leader>c <Action>(CommentByLineComment)
 map <leader>l <Action>(ReformatCode)
+map <leader>o <Action>(OptimizeImports)
 
 " Refactoring
 map <leader>R <Action>(Refactorings.QuickListPopupAction)
@@ -65,7 +63,6 @@ map <leader><enter> <Action>(ShowIntentionActions)
 
 
 " NAVIGATION
-map <leader>o <Action>(FileStructurePopup)
 map <leader>t <Action>(SelectInProjectView)
 map <leader>u <Action>(FindUsages)
 map <C-]> <Action>(GotoDeclaration)
