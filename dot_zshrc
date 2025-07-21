@@ -70,8 +70,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-	git vi-mode)
+
+plugins=(git vi-mode fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,3 +105,50 @@ alias ssha='eval `ssh-agent -s` && ssh-add ~/.ssh/id_rsa'
 
 alias gitl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
+alias python=/opt/homebrew/bin/python3
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export LESSOPEN="|/opt/homebrew/bin/lesspipe.sh %s"
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Alt-c becomes the cedilla with iTerm2
+bindkey "ç" fzf-cd-widget
+
+set -o vi
+echo ".zshrc running"
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/andrewmagerman/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+
+# make chezmoi edits happen in vim
+export EDITOR=vim
+
+export ISYNTH_HOME="/Users/andrewmagerman/sourcecontrol/isynth"
+export ISYNTH_ENVS_HOME="/Users/andrewmagerman/sourcecontrol/isynth_envs"
+
+# make zsh have vim keybindings
+bindkey -v
+
+# JAVA HOME.
+export JAVA_HOME="/opt/homebrew/Cellar/openjdk/24.0.1/libexec/openjdk.jdk/Contents/Home"
+
+# PYTHONPATH
+export PYTHONPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/:$PYTHONPATH"
+
+export CDPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/pf_model/"
+
+
+# Added by Windsurf
+export PATH="/Users/andrewmagerman/.codeium/windsurf/bin:$PATH"
+
+export XDG_CONFIG_HOME="$HOME/.config"
+
+echo "hello Andrew, .zshrc loaded (Version: 21 Jul 2025) "
