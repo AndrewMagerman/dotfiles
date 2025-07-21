@@ -612,15 +612,7 @@ require('lazy').setup({
       local servers = {
         clangd = {},
         -- gopls = {},
-        pyright = {
-          settings = {
-            python = {
-              analysis = {
-                extraPaths = { '/Users/andrewmagerman/sourcecontrol/isynth/' },
-              },
-            },
-          },
-        },
+        pyright = {},
         -- Example LSP server configuration
         -- lua_ls = {
         --   filetypes = { 'lua' },
