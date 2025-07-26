@@ -1,15 +1,32 @@
 [user]
-        email = {{ if hasKey . "email" }}{{ .email | quote }}{{ else }}"andrew.magerman@magerman.com"{{ end }} 
-        name = {{ if hasKey . "name" }}{{ .name | quote }}{{ else }}"andrewmagerman"{{ end }}
+        name = Andrew Magerman 
+	{{ if eq .chezmoi.hostname "imsaho" }}
+        email = andrew.magerman@magerman.com
+	{{ else if eq .chezmoi.hostname "work-thinkpad" }}
+	email = andrew.magerman@postfinance.ch
+	{{ else }}
+        email = andrew.magerman@magerman.com
+	{{ end }} 
 [core]
 	longpaths = true
 	preloadindex = true
 	fscache = true
+	{{ if eq .chezmoi.hostname "imsaho" }}
+	autocrlf = input
+	{{ else if eq .chezmoi.hostname "work-thinkpad" }}
 	autocrlf = true
+	{{ else }}
+	autocrlf = input
+	{{ end }} 
 [http]
+	{{ if eq .chezmoi.hostname "imsaho" }}
+	sslVerify = true
+	proxy = 
+	{{ else if eq .chezmoi.hostname "work-thinkpad" }}
 	sslVerify = false
-	sslbackend = schannel
-	proxy = http://mageraman@outproxy2.pnet.ch:3128
+	sslBackend = schannel
+	proxy = http://magermana@outproxy2.pnet.ch:3128
+	{{ end }} 
 [log]
 	mailmap = true
 [alias]
