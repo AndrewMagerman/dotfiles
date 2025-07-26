@@ -151,4 +151,4 @@ export PATH="$HOME/.codeium/windsurf/bin:$PATH"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
-echo "hello Andrew, .zshrc loaded (Version: 21 Jul 2025) "
+echo "hello Andrew, .zshrc loaded (Version: 26 Jul 2025). This is XDG compliant"
