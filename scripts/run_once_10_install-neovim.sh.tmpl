@@ -1,34 +1,21 @@
 #!/bin/bash
 set -euxo pipefail
 
+# Skip if Neovim is already installed
 if command -v nvim >/dev/null 2>&1; then
   echo "✔️ Neovim already installed: $(nvim --version | head -n 1)"
   exit 0
 fi
 
-echo "📦 Installing Neovim build dependencies..."
+echo "📦 Adding Debian unstable repo to get latest Neovim..."
+echo "deb http://deb.debian.org/debian sid main" | sudo tee /etc/apt/sources.list.d/unstable.list
+echo 'APT::Default-Release "bookworm";' | sudo tee /etc/apt/apt.conf.d/99defaultrelease
+
+echo "🔄 Updating package list..."
 sudo apt-get update
-sudo apt-get install -y \
-  ninja-build gettext cmake unzip curl build-essential git
 
-echo "🛠️ Cloning Neovim source..."
-git clone --depth=1 https://github.com/neovim/neovim.git "$HOME/neovim"
-cd "$HOME/neovim"
-
-echo "🏗️ Building Neovim..."
-make CMAKE_BUILD_TYPE=RelWithDebInfo
-
-echo "🚀 Installing Neovim into ~/.local..."
-make install PREFIX="$HOME/.local"
-
-echo "🧹 Cleaning up..."
-rm -rf "$HOME/neovim"
-
-# Add to PATH (if not already handled in your dotfiles)
-if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
-  echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.profile"
-  export PATH="$HOME/.local/bin:$PATH"
-fi
+echo "🚀 Installing Neovim from sid..."
+sudo apt-get install -y -t sid neovim
 
 echo "✅ Neovim installed: $(nvim --version | head -n 1)"
 
