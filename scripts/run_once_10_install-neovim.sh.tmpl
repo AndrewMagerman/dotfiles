@@ -1,0 +1,21 @@
+#!/bin/bash
+set -euxo pipefail
+
+# Skip if already installed
+if command -v nvim >/dev/null 2>&1; then
+  echo "✔️ Neovim already installed"
+  exit 0
+fi
+
+echo "📦 Installing latest Neovim..."
+
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+tar -C "$HOME/.local" -xzf nvim-linux64.tar.gz
+mv "$HOME/.local/nvim-linux64" "$HOME/.local/nvim"
+rm nvim-linux64.tar.gz
+
+echo "export PATH=\"\$HOME/.local/nvim/bin:\$PATH\"" >> "$HOME/.profile"
+export PATH="$HOME/.local/nvim/bin:$PATH"
+
+echo "✅ Neovim installed: $(nvim --version | head -n 1)"
+
