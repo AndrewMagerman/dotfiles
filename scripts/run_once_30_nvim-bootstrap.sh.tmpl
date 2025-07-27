@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euxo pipefail
+
+echo "🧠 Bootstrapping Neovim plugins, Mason, and Treesitter..."
+
+# headless Neovim call that waits for lazy.nvim to install plugins
+nvim --headless "+Lazy! restore" +qall || echo "⚠️ lazy.nvim bootstrap failed"
+
+# optional: run MasonInstall to ensure LSPs
+nvim --headless "+MasonInstall lua_ls pyright bashls jsonls" +qall || echo "⚠️ Mason LSP install failed"
+
+# optional: Treesitter parsers
+nvim --headless "+TSUpdateSync" +qall || echo "⚠️ Treesitter update failed"
+
+echo "✅ Neovim bootstrap completed"
+
