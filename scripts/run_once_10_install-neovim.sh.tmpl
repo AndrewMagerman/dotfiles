@@ -6,27 +6,28 @@ if command -v nvim >/dev/null 2>&1 && nvim --version | grep -q "v0.11"; then
   exit 0
 fi
 
-echo "📦 Downloading latest Neovim AppImage..."
-curl -fLO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+echo "📦 Downloading latest Neovim AppImage from GitHub Actions..."
+
+curl -fLo nvim.appimage https://github.com/neovim/neovim/releases/download/v0.11.0/nvim.appimage
+
 chmod u+x nvim.appimage
 
 echo "📦 Extracting AppImage to ~/.local/nvim"
 ./nvim.appimage --appimage-extract
 rm nvim.appimage
 
-# Move to ~/.local
 mkdir -p ~/.local
 mv squashfs-root ~/.local/nvim
 
-# Symlink nvim to ~/.local/bin
 mkdir -p ~/.local/bin
 ln -sf ~/.local/nvim/AppRun ~/.local/bin/nvim
 
-# Add to PATH
-if ! grep -q 'nvim/bin' ~/.profile; then
+# Ensure PATH
+if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
   echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.profile
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
+
 echo "✅ Installed: $(nvim --version | head -n 1)"
 
