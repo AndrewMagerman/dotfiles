@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euxo pipefail
+
+NVIM_CONFIG="$HOME/.config/nvim"
+
+# Don't overwrite if a config already exists
+if [ -d "$NVIM_CONFIG" ]; then
+  echo "✔️ Neovim config already exists at $NVIM_CONFIG — skipping clone."
+  exit 0
+fi
+
+echo "📦 Cloning kickstart.nvim fork into $NVIM_CONFIG..."
+git clone --depth 1 https://github.com/AndrewMagerman/kickstart.nvim.git "$NVIM_CONFIG"
+
+echo "✅ Kickstart.nvim cloned into $NVIM_CONFIG"
+
