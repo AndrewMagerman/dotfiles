@@ -1,21 +1,34 @@
 #!/bin/bash
 set -euxo pipefail
 
-# Skip if already installed
 if command -v nvim >/dev/null 2>&1; then
-  echo "✔️ Neovim already installed"
+  echo "✔️ Neovim already installed: $(nvim --version | head -n 1)"
   exit 0
 fi
 
-echo "📦 Installing latest Neovim..."
+echo "📦 Installing Neovim build dependencies..."
+sudo apt-get update
+sudo apt-get install -y \
+  ninja-build gettext cmake unzip curl build-essential git
 
-curl -fL --retry 3 -o nvim-linux64.tar.gz https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-tar -C "$HOME/.local" -xzf nvim-linux64.tar.gz
-mv "$HOME/.local/nvim-linux64" "$HOME/.local/nvim"
-rm nvim-linux64.tar.gz
+echo "🛠️ Cloning Neovim source..."
+git clone --depth=1 https://github.com/neovim/neovim.git "$HOME/neovim"
+cd "$HOME/neovim"
 
-echo "export PATH=\"\$HOME/.local/nvim/bin:\$PATH\"" >> "$HOME/.profile"
-export PATH="$HOME/.local/nvim/bin:$PATH"
+echo "🏗️ Building Neovim..."
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+
+echo "🚀 Installing Neovim into ~/.local..."
+make install PREFIX="$HOME/.local"
+
+echo "🧹 Cleaning up..."
+rm -rf "$HOME/neovim"
+
+# Add to PATH (if not already handled in your dotfiles)
+if ! echo "$PATH" | grep -q "$HOME/.local/bin"; then
+  echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.profile"
+  export PATH="$HOME/.local/bin:$PATH"
+fi
 
 echo "✅ Neovim installed: $(nvim --version | head -n 1)"
 
