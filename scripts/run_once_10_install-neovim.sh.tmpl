@@ -9,7 +9,7 @@ fi
 
 echo "📦 Installing latest Neovim..."
 
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+curl -fL --retry 3 -o nvim-linux64.tar.gz https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 tar -C "$HOME/.local" -xzf nvim-linux64.tar.gz
 mv "$HOME/.local/nvim-linux64" "$HOME/.local/nvim"
 rm nvim-linux64.tar.gz
