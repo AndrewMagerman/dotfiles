@@ -7,7 +7,7 @@ if command -v nvim >/dev/null 2>&1 && nvim --version | grep -q "v0.11"; then
 fi
 
 echo "📦 Downloading latest Neovim AppImage..."
-curl -LO https://github.com/neovim/neovim/releases/nightly/download/nvim.appimage
+curl -fLO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 chmod u+x nvim.appimage
 
 echo "📦 Extracting AppImage to ~/.local/nvim"
