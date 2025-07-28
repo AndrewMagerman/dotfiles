@@ -1,0 +1,6 @@
+https://github.com/editorconfig/editorconfig-vim#readme
+https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified
+https://github.com/tpope/vim-fugitive
+https://github.com/editorconfig/editorconfig-vim#readme
+https://github.com/escodebar/config/blame/DECTRIS/vim/vimrc#L71
+https://docs.qmk.fm/#/feature_advanced_keycodes

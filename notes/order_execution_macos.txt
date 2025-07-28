@@ -1,0 +1,4 @@
+order of execution on macos:
+
+http://hayne.net/MacDev/Notes/unixFAQ.html#shellStartup
+
