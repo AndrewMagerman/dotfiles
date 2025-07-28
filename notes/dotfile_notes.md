@@ -1,3 +1,14 @@
+# update 28 July 2025
+
+Development of this repo accelerated by my setup of devcontainers at my clients.
+I initially tried to make chezmoi do all the setup, including software, but I have had issues with neovim installs on a debian base. Kickstart, which I have used up to now, has as a requirement a latest and greatest version of neovim 0.11.3.
+
+Chatgpt is proving to be helpful but sometimes forgets point I made beforehand.
+
+Today I merged the old files which were in dotfiles to my chezmoi managed repo of .dotfiles.
+
+Once again, follow the defaults is the best advice.
+
 # update July 2025
 
 some new lessons, courtesy of the Primagean:
