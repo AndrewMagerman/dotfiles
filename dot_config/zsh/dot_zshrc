@@ -1,6 +1,3 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Load universal profile (for PATH etc.)
 [ -f "$HOME/.profile" ] && source "$HOME/.profile"
 
@@ -20,12 +17,10 @@ is_macos() { [[ "$OSTYPE" == darwin* ]]; }
 is_linux() { [[ "$OSTYPE" == linux* ]]; }
 
 
-
+# ---- Aliases ----
 alias ssha='eval `ssh-agent -s` && ssh-add ~/.ssh/id_rsa'
 
 alias gitl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-
 
 # ---- fzf integration (portable, single source of truth) ----
 if [[ $- == *i* ]]; then
@@ -44,9 +39,6 @@ bindkey -v
 # Alt-c becomes the cedilla with iTerm2
 bindkey "ç" fzf-cd-widget
 
-set -o vi
-echo ".zshrc running"
-
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=($HOME/.docker/completions $fpath)
 autoload -Uz compinit
@@ -57,25 +49,21 @@ compinit
 # make chezmoi edits happen in vim
 export EDITOR=nvim
 
+# ISYNTH Environment variables
 export ISYNTH_HOME="$HOME/sourcecontrol/isynth"
 export ISYNTH_ENVS_HOME="$HOME/sourcecontrol/isynth_envs"
 
 # make zsh have vim keybindings
 bindkey -v
 
-# JAVA HOME.
-export JAVA_HOME="/opt/homebrew/Cellar/openjdk/24.0.1/libexec/openjdk.jdk/Contents/Home"
-
 # PYTHONPATH
 export PYTHONPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/:$PYTHONPATH"
 
+# CDPATH
 export CDPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/pf_model/"
 
 # Tmux - use a sneaky alias to make the venerable tmux XDG-Compliant:
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
-
-# Added by Windsurf
-export PATH="$HOME/.codeium/windsurf/bin:$PATH"
 
 
 [[ $- == *i* ]] && echo "hello Andrew, .zshrc loaded (Version: 9 Aug 2025). This is XDG compliant"
