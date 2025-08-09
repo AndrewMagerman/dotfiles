@@ -9,7 +9,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 ZSH_THEME="robbyrussell"
-plugins=(git fzf)
+plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # ---- Platform detection ----
@@ -18,7 +18,7 @@ is_linux() { [[ "$OSTYPE" == linux* ]]; }
 
 
 # ---- Aliases ----
-alias ssha='eval `ssh-agent -s` && ssh-add ~/.ssh/id_rsa'
+alias ssha='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 
 alias gitl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
@@ -35,14 +35,14 @@ if [[ $- == *i* ]]; then
 fi
 
 # ---- Keybinding tweaks ----
+# make zsh have vim keybindings
 bindkey -v
+
 # Alt-c becomes the cedilla with iTerm2
 bindkey "ç" fzf-cd-widget
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=($HOME/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
 # End of Docker CLI completions
 
 
@@ -52,9 +52,6 @@ export EDITOR=nvim
 # ISYNTH Environment variables
 export ISYNTH_HOME="$HOME/sourcecontrol/isynth"
 export ISYNTH_ENVS_HOME="$HOME/sourcecontrol/isynth_envs"
-
-# make zsh have vim keybindings
-bindkey -v
 
 # PYTHONPATH
 export PYTHONPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/:$PYTHONPATH"
