@@ -1,3 +1,15 @@
+# update 9 August 2025
+
+making some progress in the automated scripts. ChatGPT is proving good at making small suggestions and explaining individual lines.
+
+Debugging the setup script on VSCode with the devcontainer is proving to be a bit cumbersome, but I am getting used to the concepts.
+
+Neovim had to be installed from an image because kickstart needs a very recent version, which is not what comes with a a standard debian distro.
+
+I followed the standard installation paths for dotfiles - it's called XDG and has already helped a lot.
+
+Having the CAPS LOCK key mapped to Ctrl turned out to be the good choice. I am still having issues with the markdown preview neovim plugin but will probably remove this.
+
 # update 28 July 2025
 
 Development of this repo accelerated by my setup of devcontainers at my clients.
