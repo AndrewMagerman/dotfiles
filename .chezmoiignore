@@ -1,4 +1,33 @@
+# Ignore documentation
 *.md
+README.md
+LICENSE.md
 
+# Local notes
 notes/
+
+# System files
+.DS_Store
+dot_DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories
 .idea/
+dot_idea/
+.vscode/
+*.sublime-*
+
+# Temporary files
+*.swp
+*.swo
+*~
+*.orig
+*.bak
+
+# Neovim generated files
+lazy-lock.json
+plugin/packer_compiled.lua
+
+# Local overrides
+local/
