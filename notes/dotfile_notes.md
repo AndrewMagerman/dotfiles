@@ -10,6 +10,8 @@ I followed the standard installation paths for dotfiles - it's called XDG and ha
 
 Having the CAPS LOCK key mapped to Ctrl turned out to be the good choice. I am still having issues with the markdown preview neovim plugin but will probably remove this.
 
+Ah, I also started understanding how the ssh keys work. Basically you need to start the ssh agent in the host, make some settings so that this agent is **mounted** in the container, and then everything works. A real 'AHA' moment -so **that's** how it works...
+
 # update 28 July 2025
 
 Development of this repo accelerated by my setup of devcontainers at my clients.
