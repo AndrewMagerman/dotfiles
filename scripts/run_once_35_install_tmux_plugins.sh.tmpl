@@ -1,14 +1,24 @@
 #!/bin/sh
-# Install tmux plugins in a headless way
+# Install tmux plugins in a headless way and reload tmux
 
 set -e
 
-# Start a new tmux server in the background
-tmux start-server
+echo "[chezmoi] Setting up tmux plugins..."
 
-# Create a new session, install plugins, then kill the session
+# Start a new tmux server in the background if not running
+if ! tmux has-session 2>/dev/null; then
+  tmux start-server
+fi
+
+# Create a temporary session to install plugins
 tmux new-session -d -s temp_plugin_install \
-  'tmux run-shell ~/.config/tmux/plugins/tpm/bindings/install_plugins && \
+  'echo "Installing tmux plugins..." && \
+   ~/.config/tmux/plugins/tpm/bin/install_plugins && \
+   echo "Plugins installed. Reloading tmux..." && \
+   tmux source ~/.config/tmux/tmux.conf && \
+   tmux display-message "tmux plugins installed and config reloaded!" && \
+   sleep 1 && \
    tmux kill-session -t temp_plugin_install'
 
 echo "tmux plugins installation started in the background."
+echo "Run 'tmux source ~/.config/tmux/tmux.conf' if you need to reload manually."
