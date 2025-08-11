@@ -1,9 +1,7 @@
 #!/bin/sh
-# Install tmux plugins in a headless way and reload tmux
-
 set -e
 
-echo "[chezmoi] Setting up tmux plugins..."
+echo "[chezmoi] Installing tmux plugins..."
 
 # Start a new tmux server in the background if not running
 if ! tmux has-session 2>/dev/null; then
