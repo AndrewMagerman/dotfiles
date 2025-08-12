@@ -3,20 +3,12 @@ set -e
 
 echo "[chezmoi] Installing tmux plugins..."
 
-# Start a new tmux server in the background if not running
-if ! tmux has-session 2>/dev/null; then
-  tmux start-server
+# Install plugins using TPM
+if [ -d "$HOME/.config/tmux/plugins/tpm" ]; then
+  echo "Running TPM install..."
+  $HOME/.config/tmux/plugins/tpm/bin/install_plugins
+  echo "Plugins installation complete."
+else
+  echo "TPM not found. Please install TPM first."
+  exit 1
 fi
-
-# Create a temporary session to install plugins
-tmux new-session -d -s temp_plugin_install \
-  'echo "Installing tmux plugins..." && \
-   ~/.config/tmux/plugins/tpm/bin/install_plugins && \
-   echo "Plugins installed. Reloading tmux..." && \
-   tmux source ~/.config/tmux/tmux.conf && \
-   tmux display-message "tmux plugins installed and config reloaded!" && \
-   sleep 1 && \
-   tmux kill-session -t temp_plugin_install'
-
-echo "tmux plugins installation started in the background."
-echo "Run 'tmux source ~/.config/tmux/tmux.conf' if you need to reload manually."
