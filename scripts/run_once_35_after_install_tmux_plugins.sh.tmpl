@@ -1,15 +1,45 @@
 #!/bin/sh
-set -e
+set -euo pipefail
 
+# --- config (XDG) ---
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+TMUX_CONF="$XDG_CONFIG_HOME/tmux/tmux.conf"
+TPM_DIR="$XDG_DATA_HOME/tmux/plugins/tpm"
+PLUGINS_DIR="$XDG_DATA_HOME/tmux/plugins"
+SOCKET_NAME="tpm-setup"           # isolated tmux server socket
+SESSION="__tpm_bootstrap__"
 
-echo "[chezmoi] 35 Installing tmux plugins..."
+# --- prereqs ---
+command -v git >/dev/null || { echo "git is required"; exit 1; }
+command -v tmux >/dev/null || { echo "tmux is required"; exit 1; }
 
-# Install plugins using TPM
-if [ -d "$HOME/.config/tmux/plugins/tpm" ]; then
-  echo "Running TPM install..."
-  $HOME/.config/tmux/plugins/tpm/bin/install_plugins
-  echo "Plugins installation complete."
-else
-  echo "TPM not found. Please install TPM first."
-  exit 1
+# Ensure plugin dir + TPM present
+mkdir -p "$PLUGINS_DIR"
+if [[ ! -d "$TPM_DIR" ]]; then
+  echo "Cloning TPM into $TPM_DIR"
+  git clone --depth=1 https://github.com/tmux-plugins/tpm "$TPM_DIR"
 fi
+
+# --- start headless tmux using your XDG config ---
+# Export TMUX_PLUGIN_MANAGER_PATH so TPM uses XDG dir
+export TMUX_PLUGIN_MANAGER_PATH="$PLUGINS_DIR"
+
+# Start a dedicated server/socket so we don't touch any running session
+tmux -L "$SOCKET_NAME" -f "$TMUX_CONF" start-server
+
+# Create a dummy session (some plugins expect a session)
+tmux -L "$SOCKET_NAME" new-session -d -s "$SESSION" -n bootstrap
+
+# Install (or update) plugins via TPM
+"$TPM_DIR/bin/install_plugins"   || true
+"$TPM_DIR/bin/update_plugins"    || true
+
+# Clean unused plugins (optional)
+# "$TPM_DIR/bin/clean_plugins"  || true
+
+# Tear down the dummy session and server
+tmux -L "$SOCKET_NAME" kill-session -t "$SESSION" 2>/dev/null || true
+tmux -L "$SOCKET_NAME" kill-server
+
+echo "✅ TPM plugins installed in $PLUGINS_DIR"
