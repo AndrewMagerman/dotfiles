@@ -10,6 +10,7 @@ if [ -d "$NVIM_CONFIG" ]; then
 fi
 
 echo "📦 Cloning kickstart.nvim fork into $NVIM_CONFIG..."
+exit 0
 git clone --depth 1 https://github.com/AndrewMagerman/kickstart.nvim.git "$NVIM_CONFIG"
 
 echo "✅ Kickstart.nvim cloned into $NVIM_CONFIG"

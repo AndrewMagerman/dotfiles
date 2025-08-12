@@ -2,6 +2,7 @@
 set -euxo pipefail
 
 echo "🧠 Bootstrapping Neovim plugins, Mason, and Treesitter..."
+exit 0
 
 # headless Neovim call that waits for lazy.nvim to install plugins
 nvim --headless "+Lazy! restore" +qall || echo "⚠️ lazy.nvim bootstrap failed"
