@@ -1,20 +1,16 @@
 # Ignore documentation
 *.md
-README.md
-LICENSE.md
 
 # Local notes
 notes/
 
 # System files
 .DS_Store
-dot_DS_Store
 Thumbs.db
 desktop.ini
 
 # Editor directories
 .idea/
-dot_idea/
 .vscode/
 *.sublime-*
 
