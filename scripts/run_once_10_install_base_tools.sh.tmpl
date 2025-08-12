@@ -1,29 +1,5 @@
 #!/bin/sh
 set -e
 
-echo "[chezmoi] Installing base tools..."
-
+echo "[chezmoi] 10 Installing base tools..."
 exit 0
-
-{{ if eq .chezmoi.os "darwin" }}
-echo "[darwin] Using Homebrew..."
-if ! command -v brew >/dev/null; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-brew install \
-  git \
-  zsh \
-  neovim \
-  tmux \
-  gh
-{{ else if eq .chezmoi.os "linux" }}
-echo "[linux] Using apt..."
-sudo apt update && sudo apt install -y \
-  git \
-  curl \
-  zsh \
-  neovim \
-  tmux \
-  unzip
-{{ end }}
-

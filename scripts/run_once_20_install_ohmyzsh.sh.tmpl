@@ -4,10 +4,10 @@ set -e
 ZSH="${XDG_DATA_HOME:-$HOME/.local/share}/oh-my-zsh"
 
 if [ ! -d "$ZSH" ]; then
-  echo "[chezmoi] Installing oh-my-zsh into $ZSH..."
+  echo "[chezmoi] 20 Installing oh-my-zsh into $ZSH..."
   # removes the prompt to change the shell
   export CHSH=no
-  
+
   export ZSH
   RUNZSH=no KEEP_ZSHRC=yes \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
