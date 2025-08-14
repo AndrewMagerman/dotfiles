@@ -59,11 +59,8 @@ export PYTHONPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/:$
 # CDPATH
 export CDPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/pf_model/"
 
-# Tmux - use a sneaky alias to make the venerable tmux XDG-Compliant:
-alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
 
-
-[[ $- == *i* ]] && echo "hello Andrew, .zshrc loaded (Version: 9 Aug 2025). This is XDG compliant"
+[[ $- == *i* ]] && echo "hello Andrew, .zshrc loaded (Version: 14 Aug 2025). This is XDG compliant"
 
 # ---- macOS-specific bits (guarded) ----
 if is_macos; then
