@@ -60,7 +60,7 @@ export PYTHONPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/:$
 export CDPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/pf_model/"
 
 
-[[ $- == *i* ]] && echo "hello Andrew, .zshrc loaded (Version: 14 Aug 2025). This is XDG compliant"
+[[ $- == *i* ]] && echo "hello Andrew, .zshrc loaded (Version: 19 Aug 2025). This is XDG compliant"
 
 # ---- macOS-specific bits (guarded) ----
 if is_macos; then

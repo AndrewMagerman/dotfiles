@@ -2,7 +2,7 @@
         name = Andrew Magerman 
 	{{ if eq .chezmoi.hostname "imsaho" }}
         email = andrew.magerman@magerman.com
-	{{ else if eq .chezmoi.hostname "work-thinkpad" }}
+	{{ else if eq .chezmoi.hostname "w013bl-wsl" }}
 	email = andrew.magerman@postfinance.ch
 	{{ else }}
         email = andrew.magerman@magerman.com
@@ -13,7 +13,7 @@
 	fscache = true
 	{{ if eq .chezmoi.hostname "imsaho" }}
 	autocrlf = input
-	{{ else if eq .chezmoi.hostname "work-thinkpad" }}
+	{{ else if eq .chezmoi.hostname "w013bl-wsl" }}
 	autocrlf = true
 	{{ else }}
 	autocrlf = input
@@ -22,7 +22,7 @@
 	{{ if eq .chezmoi.hostname "imsaho" }}
 	sslVerify = true
 	proxy = 
-	{{ else if eq .chezmoi.hostname "work-thinkpad" }}
+	{{ else if eq .chezmoi.hostname "w013bl-wsl" }}
 	sslVerify = false
 	sslBackend = schannel
 	proxy = http://magermana@outproxy2.pnet.ch:3128
