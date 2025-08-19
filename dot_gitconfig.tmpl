@@ -1,51 +1,82 @@
+{{- /* ==== machine facts ==== */ -}}
+{{- $os := .chezmoi.os -}}
+{{- $host := .chezmoi.hostname -}}
+{{- $isMac := eq $os "darwin" -}}
+{{- $isWin := eq $os "windows" -}}
+{{- $isWSL := and (eq $os "linux") (contains (lower .chezmoi.kernel.osrelease) "microsoft") -}}
+{{- $isWorkHost := eq $host "w013bl-wsl" -}}
+{{- $inCodespaces := ne (env "CODESPACES") "" -}}
+{{- $hasDockerenv := stat "/.dockerenv" -}}
+{{- $inContainer := or $inCodespaces $hasDockerenv -}}
+
+{{- /* ==== email selection with env override ==== */ -}}
+{{- $email :=
+      cond (ne (env "GIT_AUTHOR_EMAIL") "")
+           (env "GIT_AUTHOR_EMAIL")
+           (cond (eq $host "imsaho")
+                 "andrew.magerman@magerman.com"
+                 (cond (or $isWorkHost $isWSL $inContainer)
+                       "andrew.magerman@postfinance.ch"
+                       "andrew.magerman@postfinance.ch")) -}}
+
 [user]
-        name = Andrew Magerman 
-	{{ if eq .chezmoi.hostname "imsaho" }}
-        email = andrew.magerman@magerman.com
-	{{ else if eq .chezmoi.hostname "w013bl-wsl" }}
-	email = andrew.magerman@postfinance.ch
-	{{ else }}
-        email = andrew.magerman@magerman.com
-	{{ end }} 
+    name = Andrew Magerman
+    email = {{ $email }}
+
 [core]
-	longpaths = true
-	preloadindex = true
-	fscache = true
-	{{ if eq .chezmoi.hostname "imsaho" }}
-	autocrlf = input
-	{{ else if eq .chezmoi.hostname "w013bl-wsl" }}
-	autocrlf = true
-	{{ else }}
-	autocrlf = input
-	{{ end }} 
+    longpaths = true
+    preloadindex = true
+    fscache = true
+{{- if $isWin }}
+    autocrlf = true
+{{- else }}
+    autocrlf = input
+{{- end }}
+
 [http]
-	{{ if eq .chezmoi.hostname "imsaho" }}
-	sslVerify = true
-	proxy = 
-	{{ else if eq .chezmoi.hostname "w013bl-wsl" }}
-	sslVerify = false
-	sslBackend = gnutls
-	proxy = http://magermana@outproxy2.pnet.ch:3128
-	{{ end }} 
+{{- if eq $host "imsaho" }}
+    sslVerify = true
+    proxy =
+{{- else if $isWorkHost }}
+    # Corporate Git on Windows host
+    sslVerify = false
+    sslBackend = gnutls
+{{- else if $isWSL }}
+    # Same physical laptop but inside WSL
+    # (mirror Windows corporate behavior if needed)
+    sslVerify = false
+    sslBackend = gnutls
+{{- else }}
+    sslVerify = true
+{{- end }}
+
 [log]
-	mailmap = true
+    mailmap = true
+
 [alias]
-	ca = commit -a -m
-	yeet = !git branch --merged| egrep -v "release" | xargs git branch --delete
-	graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    ca = commit -a -m
+    yeet = !git branch --merged | egrep -v "release" | xargs git branch --delete
+    graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+
 [push]
-	default = current
+    default = current
+
 [credential "http://outproxy2.pnet.ch:3128"]
-	provider = generic
+    provider = generic
+
 [safe]
-	directory = C:/Users/magermana/AppData/Local/Programs/Git/isynth_envs/pf_model
-	directory = *
+    directory = C:/Users/magermana/AppData/Local/Programs/Git/isynth_envs/pf_model
+    directory = *
+
 [credential]
-	helper = manager
+    helper = manager
+
 [gc]
-	auto = 256
+    auto = 256
+
 [difftool "sourcetree"]
-	cmd = "'' "
+    cmd = "'' "
+
 [mergetool "sourcetree"]
-	cmd = "'' "
-	trustExitCode = true
+    cmd = "'' "
+    trustExitCode = true
