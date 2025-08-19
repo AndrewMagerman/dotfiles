@@ -24,7 +24,7 @@
 	proxy = 
 	{{ else if eq .chezmoi.hostname "w013bl-wsl" }}
 	sslVerify = false
-	sslBackend = schannel
+	sslBackend = gnutls
 	proxy = http://magermana@outproxy2.pnet.ch:3128
 	{{ end }} 
 [log]
