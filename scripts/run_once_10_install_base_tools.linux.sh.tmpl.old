@@ -1,5 +1,0 @@
-#!/bin/sh
-set -e
-
-echo "[chezmoi] 10 Installing base tools..."
-exit 0
