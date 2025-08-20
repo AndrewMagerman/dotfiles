@@ -1,67 +1,29 @@
-alias lg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-alias lg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
-alias lg=!"git lg1"
-
-
-# Colorized aliases
-# Basic log
-alias log="printf '$bldcyn' && git log --pretty=format:'%D' -1 && git log --pretty=format:'%C(green)%h%Creset ≁ %C(yellow)%>(12,trunc)%cr%C(white) %>(11,trunc)%an%C(green) ⟹  %C(blue) %s' --abbrev-commit --date=relative" 
-
-# Basic log with graph
-alias logg="printf '$bldcyn' && git log --pretty=format:'%D' -1 && git log --graph --pretty=format:'%C(green)%h%Creset ≁ %C(yellow)%>(12,trunc)%cr%C(white) %>(11,trunc)%an%C(green) ⟹  %C(blue) %s' --abbrev-commit --date=relative"
-
-# Verbose log
-alias logv="printf '$bldcyn' && git log --pretty=format:'%D' -1 && git log --pretty=format:'%C(green)%h%Creset ≁ %C(yellow)%>(12,trunc)%cr%C(white) %>(11,trunc)%an %Creset%ce%C(green) ⟹  %C(blue) %s' --abbrev-commit --date=relative"
-
-# Verbose log with graph
-alias loggv="printf '$bldcyn' && git log --pretty=format:'%D' -1 && git log --graph --pretty=format:'%C(green)%h%Creset ≁ %C(yellow)%>(12,trunc)%cr%C(white) %>(11,trunc)%an %Creset%ce%C(green) ⟹  %C(blue) %s' --abbrev-commit --date=relative"
-
-# Log with full commit messages
-alias logm="printf '$bldcyn' && git log --pretty=format:'%D' -1 && git log --format=format:'%Creset%Cgreen%h%Creset | %C(white)%an | %C(yellow)%cr%n%Creset%s%n%n%b%n'"
-
-# Show refs
-alias refs="printf '$bldcyn' && git show-ref --abbrev && printf '$txtrst'"
-
-# Show remote refs and urls
-alias remotes="printf '$txtpur' && git remote -v && printf '$bldcyn\n' && git branch -r --no-color && printf '$txtrst'" 
-
-# Alias for colorized -ls command
-alias ls='ls -Gp'
-
-alias ssha='eval `ssh-agent -s` && ssh-add ~/.ssh/id_rsa' 
+alias ssha='eval `ssh-agent -s` && ssh-add ~/.ssh/id_rsa'
 alias sshe='eval `ssh-agent -s` && ssh-add ~/.ssh/id_ed25519' 
 
 export CDPATH=.:~:/c/local/sourcecontrol/:/c/work/isynth_folder/isynth_envs/
 
-
-bind '"\e[A":history-search-backward'
-bind '"\e[B":history-search-forward'
-
 alias sync="git push pf && git push itopia"
 alias synct="git push pf --tags && git push itopia --tags"
-alias gs="git status"
 alias cam="git add -A && git commit -am"
-alias rebase="git rebase -i release/2502"
+alias rebase="git rebase -i release/2511"
 
 alias isynthdev="cd /c/local/isynth_folder/isynth_develop/isynth"
 alias myday="git log --since=\"6am\" --oneline | clip"
 alias wip="git add -A && git commit -m\"wip\""
 alias install_requirements="source /c/work/isynth_folder/isynth_virtualenv/Scripts/activate && pip3 install -r /c/work/isynth_folder/isynth_envs/pf_model/requirements.txt --trusted-host repo.pnet.ch --index-url https://repo.pnet.ch/artifactory/api/pypi/python/simple && pip3 install -r /c/work/isynth_folder/isynth/requirements.txt --trusted-host repo.pnet.ch --index-url https://repo.pnet.ch/artifactory/api/pypi/python/simple"
-alias home="git checkout release/2502 && git pull pf release/2502"
+alias home="git checkout release/2511 && git pull pf release/2511"
 alias pushwip="git add -A && git commit -m\"wip\" && git push pf"
 alias pipupgrade="pip install --upgrade pip --trusted-host repo.pnet.ch --index-url https://repo.pnet.ch/artifactory/api/pypi/python/simple"
-alias activate="/c/work/isynth_folder/isynth_virtualenv/Scripts/activate"
 alias addwip="git add -A && git commit --amend --no-edit"
 alias ap="./ap.sh"
+
 # puts vim keybindings in
 set -o vi
 
 # make chezmoi edits happen in vim
 export EDITOR=vim
 
-source /c/work/isynth_folder/isynth_virtualenv/Scripts/activate
-
-echo "~/.bash_profile version 2024-10-25 was sourced - welcome Andrew"
-sshe
+echo "~/.bash_profile version 20 Aug 2025 was sourced - welcome Andrew"
 
 
