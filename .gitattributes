@@ -1,0 +1,68 @@
+# --- Defaults ---------------------------------------------------------------
+# Let Git detect text files, but don't change line endings implicitly.
+* text=auto
+
+# --- Force LF for anything executed/parsed by Unix tools --------------------
+# Shell & script files
+*.sh      text eol=lf
+*.bash    text eol=lf
+*.zsh     text eol=lf
+*.fish    text eol=lf
+*.py      text eol=lf
+*.pl      text eol=lf
+*.rb      text eol=lf
+*.lua     text eol=lf
+*.ts      text eol=lf
+*.js      text eol=lf
+*.go      text eol=lf
+*.rs      text eol=lf
+
+# Dotfiles / config (keep LF to avoid Unix parsing issues)
+.*         text eol=lf
+*.conf     text eol=lf
+*.cfg      text eol=lf
+*.ini      text eol=lf
+*.toml     text eol=lf
+*.json     text eol=lf
+*.yml      text eol=lf
+*.yaml     text eol=lf
+EditorConfig text eol=lf
+Makefile   text eol=lf
+Dockerfile text eol=lf
+
+# Devcontainer & CI configs
+.devcontainer/** text eol=lf
+.github/**       text eol=lf
+.gitlab/**       text eol=lf
+
+# Chezmoi config & scripts
+chezmoi.*        text eol=lf
+scripts/**       text eol=lf
+run_*/**         text eol=lf
+execute_*/**     text eol=lf
+
+# Docs (keep LF everywhere)
+*.md       text eol=lf
+*.txt      text eol=lf
+
+# --- True Windows-only script types (CRLF is fine/expected) -----------------
+*.bat      text eol=crlf
+*.cmd      text eol=crlf
+
+# --- Binary files (never touch line endings) --------------------------------
+*.png  -text
+*.jpg  -text
+*.jpeg -text
+*.gif  -text
+*.ico  -text
+*.pdf  -text
+*.zip  -text
+*.7z   -text
+*.gz   -text
+*.bz2  -text
+*.xz   -text
+*.tar  -text
+*.woff -text
+*.woff2 -text
+*.ttf  -text
+*.eot  -text
