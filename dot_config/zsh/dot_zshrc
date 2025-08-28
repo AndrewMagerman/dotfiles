@@ -19,6 +19,9 @@ is_linux() { [[ "$OSTYPE" == linux* ]]; }
 
 # ---- Aliases ----
 alias ssha='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
+alias sshe='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
+alias nvim-conflicts='nvim $(git diff --name-only --diff-filter=U)'
+
 
 alias gitl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
@@ -57,7 +60,8 @@ export ISYNTH_ENVS_HOME="$HOME/sourcecontrol/isynth_envs"
 export PYTHONPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/:$PYTHONPATH"
 
 # CDPATH
-export CDPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/pf_model/"
+export CDPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/pf_model/:$HOME/src/gitlab.pnet.ch/
+isynth_envs/pf_model:$CDPATH"
 
 
 [[ $- == *i* ]] && echo "hello Andrew, .zshrc loaded (Version: 19 Aug 2025). This is XDG compliant"
