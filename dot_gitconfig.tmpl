@@ -24,11 +24,8 @@
     longpaths = true
     preloadindex = true
     fscache = true
-    {{- if $isWin }}
-    autocrlf = true
-    {{- else }}
     autocrlf = input
-    {{- end }}
+    eol = lf
 
 [http]
     {{- if eq $host "imsaho" }}
@@ -54,6 +51,9 @@
 
 [push]
     default = current
+
+[pull]
+    rebase = false
 
 [credential "http://outproxy2.pnet.ch:3128"]
     provider = generic
