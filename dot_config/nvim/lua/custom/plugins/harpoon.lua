@@ -7,7 +7,17 @@ return {
   config = function()
     local harpoon = require 'harpoon' -- Add current file to Harpoon
 
-    harpoon:setup()
+    harpoon:setup({
+      settings = {
+        -- persist your list automatically
+        save_on_toggle = true,      -- save when opening/closing the UI
+        sync_on_ui_close = true,    -- write to disk when UI closes
+        -- make lists project-specific (cwd-based)
+        key = function()
+          return vim.loop.cwd()
+        end,
+      },
+    })
 
     vim.keymap.set('n', '<leader>a', function()
       harpoon:list():add()

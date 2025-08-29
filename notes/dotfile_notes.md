@@ -1,3 +1,8 @@
+# update 21 August 2025
+The chezmoi scripts turned out to be too much of a hassle. I finally started to get some reproducible stability by simplifying the scope.
+
+Had some issues with line endings, tried to adress them with a .gitattributes directly in the chezmoi folder.
+
 # update 9 August 2025
 
 making some progress in the automated scripts. ChatGPT is proving good at making small suggestions and explaining individual lines.
