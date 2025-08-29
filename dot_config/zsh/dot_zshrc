@@ -21,9 +21,21 @@ is_linux() { [[ "$OSTYPE" == linux* ]]; }
 alias ssha='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 alias sshe='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
 alias nvim-conflicts='nvim $(git diff --name-only --diff-filter=U)'
+alias addwip='git add -A && git commit --amend --no-edit'
+alias home='git checkout release/2511 && git pull pf release/2511'
 
+alias lg='!git lg1'
+alias lg1='git log --graph --abbrev-commit --decorate --format=format:'\''%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'\'' --all'
+alias lg2='git log --graph --abbrev-commit --decorate --format=format:'\''%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'\'''\''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'\'' --all'
 
-alias gitl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias myday='git log --since="6am" --oneline | clip'
+alias pipupgrade='pip install --upgrade pip --trusted-host repo.pnet.ch --index-url https://repo.pnet.ch/artifactory/api/pypi/python/simple'
+alias rebase='git rebase -i release/2511'
+alias refs='printf '\'''\'' && git show-ref --abbrev && printf '\'''\'''
+alias remotes='printf '\'''\'' && git remote -v && printf '\''\n'\'' && git branch -r --no-color && printf '\'''\'''
+alias sync='git push pf && git push itopia'
+alias synct='git push pf --tags && git push itopia --tags'
+
 
 # ---- fzf integration (portable, single source of truth) ----
 if [[ $- == *i* ]]; then
