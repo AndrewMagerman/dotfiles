@@ -24,11 +24,8 @@
     longpaths = true
     preloadindex = true
     fscache = true
-    {{- if $isWin }}
-    autocrlf = true
-    {{- else }}
-    autocrlf = input
-    {{- end }}
+    autocrlf = false
+    eol = lf
 
 [http]
     {{- if eq $host "imsaho" }}
