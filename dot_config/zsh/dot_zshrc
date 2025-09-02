@@ -74,7 +74,7 @@ export PYTHONPATH="$HOME/src/gitlab.pnet.ch/isynth_envs/pf_model:$HOME/sourcecon
 echo $PYTHONPATH
 
 # CDPATH
-export CDPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/pf_model/:$HOME/src/gitlab.pnet.ch/
+export CDPATH=".:$HOME/src/gitlab.pnet.ch/isynth_envs/:$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/pf_model/:$HOME/src/gitlab.pnet.ch/
 isynth_envs/pf_model:$CDPATH"
 
 
