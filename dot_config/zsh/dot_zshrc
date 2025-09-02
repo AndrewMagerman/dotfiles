@@ -69,7 +69,7 @@ export ISYNTH_HOME="$HOME/sourcecontrol/isynth"
 export ISYNTH_ENVS_HOME="$HOME/sourcecontrol/isynth_envs"
 
 # PYTHONPATH
-export PYTHONPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/:$PYTHONPATH"
+export PYTHONPATH="$HOME/src/gitlab.pnet.ch/isynth_envs/pf_model:$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/:$PYTHONPATH"
 
 # CDPATH
 export CDPATH="$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/pf_model/:$HOME/src/gitlab.pnet.ch/
