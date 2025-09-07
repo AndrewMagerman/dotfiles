@@ -11,7 +11,7 @@ vim.keymap.set("i", ";;", "<C-o>A;", {
 })
 
 -- Abbreviation for '->' in C files
-vim.cmd("iabbrev ,, ->")
+vim.api.nvim_buf_set_keymap(0, 'i', ',,', '->', {noremap = true, silent = true})
 
 -- Or a mapping instead:
 -- vim.keymap.set("i", "<A-.>", "->", { buffer = true, desc = "Insert ->" })
