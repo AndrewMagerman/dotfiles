@@ -1,4 +1,15 @@
+# update 7 September 2025
+
+The line endings fiasco had to do with autocrlf settings, I have now just set them to false. What a waste of time.
+
+Using neovim at work is making me improve my muscle memory. After just a couple of weeks of daily use using vscode for text editing just feels like wallowing in honey. It's so slow. I am also starting to get used to Harpoon, and it's blindingly fast. Jump to another file, yank something, go back to the original file. Super.
+
+I have also started using some of the LSP functions such as rename and jump to definitions, but it's slow. C-i and C-o to navigate back/forwards is also super cool.
+
+I discovered that neovim's swap files are in ~/.local/nvim/swap. Occasionally deleting everything in there helps avoid those mostly unwarranted neovim nags.
+
 # update 21 August 2025
+
 The chezmoi scripts turned out to be too much of a hassle. I finally started to get some reproducible stability by simplifying the scope.
 
 Had some issues with line endings, tried to adress them with a .gitattributes directly in the chezmoi folder.
