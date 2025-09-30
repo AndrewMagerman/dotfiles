@@ -411,28 +411,6 @@ require('lazy').setup({
       'saghen/blink.cmp',
     },
     config = function()
-      -- Brief aside: **What is LSP?**
-      --
-      -- LSP is an initialism you've probably heard, but might not understand what it is.
-      --
-      -- LSP stands for Language Server Protocol. It's a protocol that helps editors
-      -- and language tooling communicate in a standardized fashion.
-      --
-      -- In general, you have a "server" which is some tool built to understand a particular
-      -- language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc.). These Language Servers
-      -- (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone
-      -- processes that communicate with some "client" - in this case, Neovim!
-      --
-      -- LSP provides Neovim with features like:
-      --  - Go to definition
-      --  - Find references
-      --  - Autocompletion
-      --  - Symbol Search
-      --  - and more!
-      --
-      -- Thus, Language Servers are external tools that must be installed separately from
-      -- Neovim. This is where `mason` and related plugins come into play.
-      --
       -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
       -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
@@ -460,6 +438,16 @@ require('lazy').setup({
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
+
+          -- Quick Fix only (often includes “Add import …” when available)
+          map('grA', function()
+            vim.lsp.buf.code_action { context = { only = { 'quickfix' } }, apply = true }
+          end, 'Code Action (Quick Fix)')
+
+          -- Organize imports on demand
+          map('<leader>oi', function()
+            vim.lsp.buf.code_action { context = { only = { 'source.organizeImports' } }, apply = true }
+          end, '[O]rganize [I]mports')
 
           -- Find references for the word under your cursor.
           map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -582,6 +570,24 @@ require('lazy').setup({
         },
       }
 
+      -- Pick the best python for the current project
+      local util = require 'lspconfig.util'
+      local function get_python(root_dir)
+        -- 1) Respect active venv
+        if vim.env.VIRTUAL_ENV then
+          return util.path.join(vim.env.VIRTUAL_ENV, 'bin', 'python')
+        end
+        -- 2) Project-local virtualenvs
+        for _, dir in ipairs { '.venv', 'venv', '.env' } do
+          local py = util.path.join(root_dir, dir, 'bin', 'python')
+          if vim.fn.executable(py) == 1 then
+            return py
+          end
+        end
+        -- 3) Fallbacks
+        return vim.fn.exepath 'python3' or 'python'
+      end
+
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -590,7 +596,31 @@ require('lazy').setup({
 
       local servers = {
         clangd = {},
-        pyright = {},
+
+        pyright = {
+          on_new_config = function(new_config, root_dir)
+            -- ensure Pyright runs with the right interpreter for this workspace
+            new_config.settings = new_config.settings or {}
+            new_config.settings.python = new_config.settings.python or {}
+            new_config.settings.python.pythonPath = get_python(root_dir)
+          end,
+
+          settings = {
+            python = {
+              analysis = {
+                -- “Feels right” defaults
+                typeCheckingMode = 'standard', -- "off" | "basic" | "standard" | "strict"
+                diagnosticMode = 'workspace', -- analyze imports across the project
+                autoImportCompletions = true, -- VS Code–style “guess imports” in completion
+                -- Optional niceties:
+                useLibraryCodeForTypes = true, -- better types from installed libs
+                -- You can quiet noisy rules here if desired:
+                -- diagnosticSeverityOverrides = { reportMissingTypeStubs = "none" },
+              },
+            },
+          },
+        },
+
         bashls = {},
         lua_ls = {
           settings = {
