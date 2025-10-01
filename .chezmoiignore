@@ -5,7 +5,6 @@
 notes/
 
 # System files
-.DS_Store
 Thumbs.db
 desktop.ini
 
@@ -27,3 +26,13 @@ plugin/packer_compiled.lua
 
 # Local overrides
 local/
+
+# macOS Finder metadata (destination)
+**/.DS_Store
+
+# macOS AppleDouble files (destination)
+**/._*
+
+# Ignore the *source* representations of those files in chezmoi
+source:**/dot_DS_Store
+source:**/dot_._*
