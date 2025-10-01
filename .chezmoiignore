@@ -35,4 +35,13 @@ local/
 
 # Ignore the *source* representations of those files in chezmoi
 source:**/dot_DS_Store
-source:**/dot_._*
+
+# JetBrains project metadata (destination)
+**/.idea/**
+**/*.iml
+
+# Ignore the *source* representation inside chezmoi
+source:**/dot_idea/**
+source:**/*.iml
+
+
