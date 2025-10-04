@@ -1,3 +1,13 @@
+# update 4 October 2025
+
+OK, so I have to report a complete failure in trying to setup my LSP for python. Neither Windsurf nor ChatGPT turned out to be useful.
+
+I think I will switch to a 'distro' as recommended by DHH. He recommended Lazyvim and I think it is worth a try. All the previous configurations are in the git history of my dotfiles repo in any case.
+
+Tmux and its default keybindings I find cool, and would like to continue using harpoon and telescope.
+
+Samir told me that the autocomplete parenthesis was more of a hassle than an advantage, and I am slowly agreeing with him. I think it is going to be easier to just tell the editor what I want to see.
+
 # update 7 September 2025
 
 The line endings fiasco had to do with autocrlf settings, I have now just set them to false. What a waste of time.
