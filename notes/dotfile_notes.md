@@ -1,3 +1,13 @@
+# update 6th October.
+
+So I discovered Henry Misc, who has a working Python setup. I failed miserably to get his setup working. The bit about not using ChatGPT or any of the other AI helps is especially true for the dotfiles configuration, I think, because every codebase is slightly different.
+
+Henry Misc uses Kickstarter, which he then tweaks. I discovered that there are options on the bottom of the kickstarter init.lua which one simply needs to uncomment. The clear winner/new approved plugin is neotree, which I immediately found intuitive to use, and whose intuitive keybinding (the backslash key) I found particularly intuitive.
+
+I tried LazyVIM and it is is really 'everything-out-of-the-box' but I found it slow, with a lot of distracting animations. I think I will revert back to 'Kickstarter plus' and in fact rebase my neovim.
+
+I have also decided to start learning lua, because anything else is just clueless copy-and-paste from Stackoverflow. Another insight: the 'middle bit' of the init.lua file, where the plugins are configured, are just the arrays that lazy.nvim is expecting.
+
 # update 4 October 2025
 
 OK, so I have to report a complete failure in trying to setup my LSP for python. Neither Windsurf nor ChatGPT turned out to be useful.
