@@ -1,3 +1,42 @@
+# Update 10th October
+
+Pablo recommended
+
+> Personally, I wouldn't recommend a distro or even kickstart.nvim.
+
+> I started my journey by working through the "practical vim" book by Drew Neil, and learning to use vim without any plugins or LSP (If you're using PyCharm, you can use the IdeaVim plugin to make the transition to modal editing easier).
+
+> Then I started adding plugins (although you probably don't need plugins for python LSP support)
+
+> Drew Neil's book has a chapter on using `vimgrep` and `cfdo` for simple refactors via the quickfix list. It's a great skill to have.
+> But these days, I use the quicker.nvim plugin and a picker (like telescope.nvim) with ripgrep to enhance that workflow.
+
+About LSP: The open source version of pyright is sluggish and missing features.
+There is a fork called basedpyright, which is a significant improvement
+
+But I don't use Python in large projects, so I don't know how well it works there
+
+This one (still in alpha - by the same people who are behind uv) looks very promising:
+https://github.com/astral-sh/ty
+
+So, I decided to do it the proper way and RTFM.
+
+Inspiration: Zazen codes
+https://zazencodes.com/
+https://github.com/zazencodes/dotfiles
+
+which, crucially, is not using a distro.
+
+So, I will now try a blank state neovim, and then code the stuff that is missing. I will be noting what I am learning too in this file.
+
+So, from the neovim docs (https://neovim.io/doc/user/lua-guide.html):
+
+- there are some magic folders in ~/.config/nvim/
+  - anything in `/plugin` gets run automatically
+  - if you want to run some files on demand, then you should do that in the `/lua` directory
+
+Other bits and bobs: Autocommands are commands that get run at specific triggers.
+
 # update 6th October.
 
 So I discovered Henry Misc, who has a working Python setup. I failed miserably to get his setup working. The bit about not using ChatGPT or any of the other AI helps is especially true for the dotfiles configuration, I think, because every codebase is slightly different.
