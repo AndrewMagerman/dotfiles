@@ -1,6 +1,6 @@
 # Update 10th October
 
-Pablo recommended
+Pablo recommended Marc
 
 > Personally, I wouldn't recommend a distro or even kickstart.nvim.
 
@@ -32,7 +32,7 @@ So, I will now try a blank state neovim, and then code the stuff that is missing
 So, from the neovim docs (https://neovim.io/doc/user/lua-guide.html):
 
 - there are some magic folders in ~/.config/nvim/
-  - anything in `/plugin` gets run automatically
+  - anything in `/plugins` gets run automatically
   - if you want to run some files on demand, then you should do that in the `/lua` directory
 
 Other bits and bobs: Autocommands are commands that get run at specific triggers.
@@ -46,6 +46,9 @@ Henry Misc uses Kickstarter, which he then tweaks. I discovered that there are o
 I tried LazyVIM and it is is really 'everything-out-of-the-box' but I found it slow, with a lot of distracting animations. I think I will revert back to 'Kickstarter plus' and in fact rebase my neovim.
 
 I have also decided to start learning lua, because anything else is just clueless copy-and-paste from Stackoverflow. Another insight: the 'middle bit' of the init.lua file, where the plugins are configured, are just the arrays that lazy.nvim is expecting.
+
+Aaah, another insight, neovim 0.11 has some pretty good LSP integration, alleviating the need of a separate plugin. I just learned as well that Mason is a plugin that does the installatoin of the LSPs for you.
+
 
 # update 4 October 2025
 
