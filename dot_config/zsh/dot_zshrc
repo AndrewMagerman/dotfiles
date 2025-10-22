@@ -69,6 +69,10 @@ export ISYNTH_HOME="$HOME/sourcecontrol/isynth"
 export ISYNTH_ENVS_HOME="$HOME/sourcecontrol/isynth_envs"
 
 # PYTHONPATH
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 export PYTHONPATH="$HOME/src/gitlab.pnet.ch/isynth_envs/pf_model:$HOME/sourcecontrol/isynth:$HOME/sourcecontrol/isynth_envs/:$PYTHONPATH"
 
 echo $PYTHONPATH
