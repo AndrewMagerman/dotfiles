@@ -15,6 +15,7 @@ end)()
 -- Keep it simple: detect project root
 M.root_markers = { "compile_commands.json", ".clangd", ".git" }
 
+M.filetypes = {"c"}
 
 return M
 
