@@ -10,8 +10,10 @@ vim.lsp.enable("marksman")
 
 vim.diagnostic.config(
     {
-        virtual_text = { source = true },
+        virtual_text = {
+            source = true,
+            severity = { min = vim.diagnostic.severity.ERROR }
+        },
         float = { source = "always" },
     }
-
 )
