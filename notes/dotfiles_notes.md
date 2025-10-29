@@ -1,3 +1,15 @@
+`# Update 29th October
+
+Good progress made on the usability of neovim as a python editor. The biggest
+headache was that the clang LSP was attaching the python buffers.
+
+I now have formatting for python, courtesy of ruff. Bizarrely, the python LSP does not include
+any sort of formatting option, so I had to install ruff to do the hard work.
+
+The diagnostics view was the result of a typo. It now works but it's too verbose, I think I will
+shut the warnings level off. Ruff has also a fixup/cleanup imports bit which is very useful.
+
+
 # Update 10th October
 
 Pablo recommended Marc
