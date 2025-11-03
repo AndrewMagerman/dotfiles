@@ -91,3 +91,9 @@ if is_macos; then
   export LESSOPEN="|/opt/homebrew/bin/lesspipe.sh %s"
   export JAVA_HOME="/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
 fi
+
+if is_linux; then
+    export ORACLE_HOME=/opt/oracle/instantclient
+    export PATH="$ORACLE_HOME:$PATH"
+    export LD_LIBRARY_PATH=$ORACLE_HOME
+fi
