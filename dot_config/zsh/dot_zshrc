@@ -97,3 +97,10 @@ if is_linux; then
     export PATH="$ORACLE_HOME:$PATH"
     export LD_LIBRARY_PATH=$ORACLE_HOME
 fi
+
+gconflict() {
+local files
+files=$(git diff --name-only --diff-filter=U)
+[ -z "$files" ] && echo "No conflicted files" && return
+nvim $files
+}
