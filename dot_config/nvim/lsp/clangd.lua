@@ -13,9 +13,8 @@ M.capabilities = (function()
 end)()
 
 -- Keep it simple: detect project root
-M.root_markers = { "compile_commands.json", ".clangd", ".git" }
+M.root_markers = {"Makefile", "compile_commands.json", ".clangd", ".git" }
 
-M.filetypes = {"c"}
+M.filetypes = {"c", "cpp", "objc", "objcpp"}
 
 return M
-
