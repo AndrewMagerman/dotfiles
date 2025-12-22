@@ -1,4 +1,12 @@
-`# Update 29th October
+# Update 22 December
+
+I am upgrading the vim/neovim skills by noticing when I want to go back to VS or Pycharm whenever I am missing something. 
+Right now that means trying to get some testing working in a minimalistic version on the console.
+The which-keys plugin, which I initially sneered at (because the primagen did) turns out to be pretty useful. The :healthcheck command is also useful to list out any keybindings which you might have in a double version.
+
+
+
+# Update 29th October
 
 Good progress made on the usability of neovim as a python editor. The biggest
 headache was that the clang LSP was attaching the python buffers.
