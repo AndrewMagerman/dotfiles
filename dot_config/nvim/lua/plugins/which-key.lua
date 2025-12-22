@@ -2,6 +2,10 @@ return {
   "folke/which-key.nvim",
   event = "VeryLazy",
   opts = {
+      spec = {
+        { "<leader>s", group = "search" },
+        { "<leader>t", group = "test" },
+      },
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below

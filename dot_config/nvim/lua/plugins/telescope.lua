@@ -3,6 +3,7 @@ return {
       dependencies = { 'nvim-lua/plenary.nvim' },
       cmd = "Telescope", -- also lazy-loads on the command
       keys = {
+          {"<leader>s", group = "search"},
          { "<leader>sf", function() require("telescope.builtin").find_files() end, desc = '[S]earch [F]iles' },
          { "<leader>sg", function() require("telescope.builtin").live_grep()  end, desc = '[S]earch by [G]rep'},
          { "<leader><leader>", function() require("telescope.builtin").buffers()    end, desc = '[ ] Find existing buffers' },
