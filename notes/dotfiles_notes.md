@@ -1,3 +1,8 @@
+# Update 25th December
+
+created the keybindings for the line diagnostics, which I have set to `gl`
+
+
 # Update 22 December
 
 I am upgrading the vim/neovim skills by noticing when I want to go back to VS or Pycharm whenever I am missing something. 
