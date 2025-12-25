@@ -6,3 +6,5 @@ vim.keymap.set({ 'n', 'v' },
         vim.lsp.buf.format { async = true }
     end,
     { desc = '[F]ormat buffer' })
+
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Line diagnostics" })
