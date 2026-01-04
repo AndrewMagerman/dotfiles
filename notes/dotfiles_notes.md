@@ -1,3 +1,8 @@
+# Update 4 Jan 2026
+
+Decided against setting up a specific formatter for Markdown, the formatting option that I am always looking for can be done with the standard `gqap`. `gq` = format command, `a` around, `p` paragraph
+
+
 # Update 25th December
 
 created the keybindings for the line diagnostics, which I have set to `gl`
