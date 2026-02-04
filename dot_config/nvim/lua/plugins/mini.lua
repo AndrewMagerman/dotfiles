@@ -1,0 +1,16 @@
+return {
+    {
+        "echasnovski/mini.ai",
+        version = false, -- always use latest
+        config = function()
+            require("mini.ai").setup()
+        end,
+    },
+    {
+        "echasnovski/mini.surround",
+        version = false,
+        config = function()
+            require("mini.surround").setup()
+        end,
+    },
+}
