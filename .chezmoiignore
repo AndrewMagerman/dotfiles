@@ -21,8 +21,10 @@ desktop.ini
 *.bak
 
 # Neovim generated files
-lazy-lock.json
+**/lazy-lock.json
+**/.nvimlog
 plugin/packer_compiled.lua
+source:**/dot_nvimlog
 
 # Local overrides
 local/
@@ -35,6 +37,7 @@ local/
 
 # Ignore the *source* representations of those files in chezmoi
 source:**/dot_DS_Store
+source:**/.DS_Store
 
 # JetBrains project metadata (destination)
 **/.idea/**
@@ -42,6 +45,6 @@ source:**/dot_DS_Store
 
 # Ignore the *source* representation inside chezmoi
 source:**/dot_idea/**
+source:**/.idea/**
 source:**/*.iml
-
 
