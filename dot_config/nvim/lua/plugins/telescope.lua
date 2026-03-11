@@ -54,8 +54,8 @@ return {
   config = function()
     require('telescope').setup({
       defaults = {
-        -- exclude .git and .venv everywhere
-        file_ignore_patterns = { "%.git/", "%.venv/" },
+        -- exclude .git, .venv, and Python bytecode everywhere
+        file_ignore_patterns = { "%.git/", "%.venv/", "%.pyc$" },
 
         hidden = true,
         follow = true,
@@ -72,7 +72,8 @@ return {
           "--hidden",
           "--no-ignore",
           "--glob", "!.git/",
-          "--glob", "!.venv/"
+          "--glob", "!.venv/",
+          "--glob", "!*.pyc",
         },
       },
 
@@ -89,6 +90,7 @@ return {
             "--no-ignore",
             "--glob", "!.git/*",
             "--glob", "!.venv/*",
+            "--glob", "!*.pyc",
           },
         }
       }
