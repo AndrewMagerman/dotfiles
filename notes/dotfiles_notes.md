@@ -1,3 +1,16 @@
+# update 12 Apr 2026
+
+Had a wonderful conversation with Mark Jakubi when I met him at the general assembly of coders only. Really fun. He once again recommended quicken (or quicker?) which, as I make it, is an UI improvement of the quickfix list - which I have been starting to use in neovim. Basically :grep populates this quicklist with entries, you can navigate through all the entries with :cprev and :cnext, :copen opens the window, :cdo makes a command happens on the line, and :cdfo runs the command on the whole files that are selected in the file.
+
+I am missing autocompletion for the files/packages when editing in python, time to look that up too.
+
+Might also try the oil.nvim plugin.
+
+# update Mar 2026
+
+just installed the mini.ai and mini.surround plugins from etchanowsky, and they roooock!
+
+
 # Update 4 Jan 2026
 
 Decided against setting up a specific formatter for Markdown, the formatting option that I am always looking for can be done with the standard `gqap`. `gq` = format command, `a` around, `p` paragraph
