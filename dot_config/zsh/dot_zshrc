@@ -22,10 +22,10 @@ alias ssha='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 alias sshe='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
 alias nvim-conflicts='nvim $(git diff --name-only --diff-filter=U)'
 alias addwip='git add -A && git commit --amend --no-edit'
-alias home='git checkout release/2605 && git pull pf release/2605'
+alias home='git checkout release/2608 && git pull pf release/2608'
 
 alias lg='!git lg1'
-alias rebase='git rebase -i release/2605'
+alias rebase='git rebase -i release/2608'
 alias refs='printf '\'''\'' && git show-ref --abbrev && printf '\'''\'''
 alias remotes='printf '\'''\'' && git remote -v && printf '\''\n'\'' && git branch -r --no-color && printf '\'''\'''
 alias sync='git push pf && git push itopia'
@@ -77,7 +77,7 @@ export CDPATH=".:$HOME/src/gitlab.pnet.ch/isynth_envs/:$HOME/sourcecontrol/isynt
 isynth_envs/pf_model:$CDPATH"
 
 
-[[ $- == *i* ]] && echo "hello Andrew, .zshrc loaded (Version: 25 February 2026). This is XDG compliant"
+[[ $- == *i* ]] && echo "hello Andrew, .zshrc loaded (Version: 14 April 2026). This is XDG compliant"
 
 # ---- macOS-specific bits (guarded) ----
 if is_macos; then
