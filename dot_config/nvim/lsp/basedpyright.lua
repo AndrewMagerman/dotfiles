@@ -4,11 +4,14 @@ return {
   cmd = { "basedpyright-langserver", "--stdio" },
   filetypes = { "python" },
   root_markers = { "pyproject.toml", "setup.cfg", "setup.py", "requirements.txt", ".git" },
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
   settings = {
     basedpyright = {
-      analysis = { typeCheckingMode = "standard", autoImportCompletions = true },
+      analysis = {
+        typeCheckingMode = "standard",
+        autoImportCompletions = true,
+        autoSearchPaths = true,
+      },
     },
   },
 }
-
-
