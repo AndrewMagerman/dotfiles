@@ -8,12 +8,7 @@ return {
       transparent_background = false,
       term_colors = true,
       integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
         telescope = true,
-        treesitter = true,
-        -- For more plugins, see: https://github.com/catppuccin/nvim#integrations
       },
     },
     config = function(_, opts)
