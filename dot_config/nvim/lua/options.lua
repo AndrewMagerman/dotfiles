@@ -19,7 +19,7 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.smartindent = true -- Smart auto-indenting
 vim.opt.autoindent = true -- Copy indent from current line
-vim.opt.grepprg = "rg --vimgrep" -- Use ripgrep if available
+vim.opt.grepprg = "rg --vimgrep --hidden --glob '!.git/'" -- Use ripgrep, including dotfiles except .git
 vim.opt.grepformat = "%f:%l:%c:%m" -- filename, line number, column, content
 
 vim.opt.termguicolors = true -- Enable 24-bit colors
